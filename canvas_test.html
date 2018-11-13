@@ -3,37 +3,7 @@
     <head>
         <meta charset="utf-8"> 
     </head>
-    <style>
-        body {
-            background-color: aliceblue;
-            width: 100%;
-            display: flex;
-        }
-        .row01 {
-            /* position: relative; */
-            /* border: solid 1px; */
-            /* height: 100px; */
-        }
-        .canvas {
-            margin-left: 30px;
-            margin-right: auto;
-            margin-top: 30px;   
-            position: absolute;
-            outline-width: 15px;
-            /*
-            outline-style: solid;
-            outline-color: gray;
-            */
-        }
-        .systemCanvas {
-            z-index: 30;
-        }
-        .frontCanvas {
-            z-index: 20;
-        }
-        .backCanvas {
-            z-index: 10;
-        }
+        <link rel="stylesheet" href="./css/main.css">
     </style>
     <body>
         <div class="row01">
@@ -41,14 +11,14 @@
             <canvas id="backCanvas" class="canvas backCanvas" ></canvas>
             <canvas id="frontCanvas" class="canvas frontCanvas" ></canvas>
         </div>
-        <script src="Mouse.js"></script>
-        <script src="CharacterManager.js"></script>
-        <script src="CharacterBase.js"></script>
-        <script src="Circle.js"></script>
-        <script src="StateBase.js"></script>
-        <script src="TitleState.js"></script>
-        <script src="CircleState.js"></script>
-        <script src="RectState.js"></script>
-        <script src="main.js"></script>
+        <script src="./js/Mouse.js"></script>
+        <script src="./js/CharacterManager.js"></script>
+        <script src="./js/CharacterBase.js"></script>
+        <script src="./js/Circle.js"></script>
+        <script src="./js/StateBase.js"></script>
+        <script src="./js/TitleState.js"></script>
+        <script src="./js/CircleState.js"></script>
+        <script src="./js/RectState.js"></script>
+        <script src="./js/main.js"></script>
     </body>
 </html>
