@@ -65,7 +65,7 @@ class RectState extends StateBase {
             // 既定の回数バウンドしたら画面を切り替える
             if (2 == o.boundCnt) {
                 // console.log("RectState:State変更");
-                this.changeState("CircleState");
+                this.changeState("CharacterState");
             }
         }
 

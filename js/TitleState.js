@@ -31,7 +31,7 @@ class TitleState extends StateBase {
      */
     run() {
         if (mouse.isLeft) {
-            this.changeState("CircleState");
+            this.changeState("CharacterState");
         }
     }
 }

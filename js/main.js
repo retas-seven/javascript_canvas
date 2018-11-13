@@ -13,7 +13,7 @@ var back;
 /** マウスイベントハンドラ */
 var mouse;
 /** 画面（各場面） */
-var _state;
+var state;
 /** 描画タイミング調整用の変数：ループ開始時の時間（ミリ秒） */
 var _loopStartMsc;
 /** 描画タイミング調整用の変数：ループ終了時の時間（ミリ秒） */
@@ -49,9 +49,10 @@ function init() {
     systemCanvas.addEventListener("contextmenu", mouse.rightClick, false);
 
     // 初期画面を設定
-    // _state = new CircleState();
-    _state = new TitleState();
-    _state.init();
+    // state = new CircleState();
+    // state = new CharacterState();
+    state = new TitleState();
+    state.init();
 }
 
 /**
@@ -68,8 +69,8 @@ function mainLoop() {
             system.fillRect(0, 0, WIDTH, HEIGHT);
             if (1.0 <= systemAlpha) {
                 let tmpState = eval("new " + nextStateName + "();");
+                state = tmpState;
                 tmpState.init();
-                _state = tmpState;
                 isSystemBlack = false;
                 isSystemBlackClear = true;
                 systemAlpha = 1.0;
@@ -91,9 +92,9 @@ function mainLoop() {
         // 画面を初期化
         front.clearRect(0, 0, WIDTH, HEIGHT);
         // 状態を更新
-        _state.run();
+        state.run();
         // 描画
-        _state.draw();
+        state.draw();
         // 検知したマウスイベントを無効化
         mouse.reset();
 

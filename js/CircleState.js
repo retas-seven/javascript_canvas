@@ -12,10 +12,10 @@ class CircleState extends StateBase {
     init () {
         console.log("CircleState.init");
         
-        /** 描画する円を作成 */
-        this._cm.add(new Circle(0, 0, 6, 2, 50, "rgb(0, 255, 128)"));
-        this._cm.add(new Circle(350, 350, -3, -7, 50, "rgb(0, 200, 255)"));
-        this._cm.add(new Circle(150, 250, 7, 3, 50, "rgb(255, 200, 0)"));
+        // 描画する円を作成
+        this.cm.add(new Circle(0, 0, 6, 2, 50, "rgb(0, 255, 128)"));
+        this.cm.add(new Circle(350, 350, -3, -7, 50, "rgb(0, 200, 255)"));
+        this.cm.add(new Circle(150, 250, 7, 3, 50, "rgb(255, 200, 0)"));
 
         // 背景色を設定
         back.fillStyle = 'rgb(100, 100, 0)';
@@ -26,20 +26,20 @@ class CircleState extends StateBase {
      * 描画
      */
     draw() {
-        this._cm.draw();
+        this.cm.draw();
     }
 
     /**
      * 状態を更新
      */
     run() {
-        this._cm.run();
+        this.cm.run();
 
         if (mouse.isRight) {
             this.changeState("CircleState");
         }
 
-        if (this._cm.characterList.length == 0) {
+        if (this.cm.characterList.length == 0) {
             this.changeState("RectState");
         }
 

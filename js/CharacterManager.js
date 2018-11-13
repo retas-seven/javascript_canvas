@@ -7,12 +7,19 @@ class CharacterManager {
      */
     constructor() {
         this.characterList = [];
+        this.characterImageMap = new Map();
     }
 
+    /**
+     * キャラクタを追加する
+     */
     add(character) {
         this.characterList.push(character);
     }
 
+    /**
+     * キャラクタを描画する
+     */
     draw() {
         // キャラクタを描画する
         for (let c of this.characterList) {
@@ -20,6 +27,9 @@ class CharacterManager {
         }
     }
 
+    /**
+     * キャラクタごとの処理を実行する
+     */
     run() {
         // 左クリックイベントの処理
         if (mouse.isLeft) {

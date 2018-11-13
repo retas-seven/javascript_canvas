@@ -6,7 +6,7 @@ class StateBase {
      * 初期化
      */
     constructor() {
-        this._cm = new CharacterManager();
+        this.cm = new CharacterManager();
         this._isChangeStateEnd = false;
     }
 

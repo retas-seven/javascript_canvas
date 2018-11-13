@@ -1,7 +1,7 @@
 /**
  * キャラクタ：円
  */
-class Circle extends CharacterBase {
+class Circle extends CharacterBase {  
     /**
      * 初期化
      */
