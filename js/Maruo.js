@@ -2,13 +2,32 @@
  * キャラクタ
  */
 class Maruo extends CharacterBase {
+    /**
+     * 使用する画像名
+     */
     static get IMAGE_NAME() {
-        return "./img/maruo.png";
+        return ["./img/maruo_1.png", "./img/maruo_2.png","./img/maruo_3.png"];
     }
+
+    /**
+     * １つの画像を表示するフレーム数
+     */
+    static get DRAW_FRAME() {
+        return 5;
+    }
+
+
     static loadImage() {
+        /*
         let img = new Image() ;
         img.src = Maruo.IMAGE_NAME;
         state.cm.characterImageMap.set(Maruo.IMAGE_NAME, img);
+        */
+        for (let imgName of Maruo.IMAGE_NAME) {
+            let img = new Image() ;
+            img.src = imgName;
+            state.cm.characterImageMap.set(imgName, img);
+        }
     }
 
     /**
@@ -21,6 +40,8 @@ class Maruo extends CharacterBase {
         this.dx = dx;
         this.dy = dy;
         this.boundCnt = 0;
+        this.imgIndex = 0;
+        this.frameCnt = 0;
 
         // TODO 画像読み込みを待つ処理を作成する必要あり？
         /*
@@ -57,11 +78,23 @@ class Maruo extends CharacterBase {
         if (this.boundCnt == 5) {
             this.isEnd = true;
         }
+
+        
+        this.frameCnt++;
+        if (Maruo.DRAW_FRAME < this.frameCnt) {
+            this.imgIndex++;
+            this.frameCnt = 0;
+            if (Maruo.IMAGE_NAME.length <= this.imgIndex) {
+                this.imgIndex = 0;
+            }
+        }
     }
 
     draw() {
+        let img = state.cm.characterImageMap.get(Maruo.IMAGE_NAME[this.imgIndex]);
+
         front.drawImage(
-            state.cm.characterImageMap.get(Maruo.IMAGE_NAME)
+            img
             , this.x
             , this.y
         );
