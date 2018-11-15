@@ -13,10 +13,12 @@ class Maruo extends CharacterBase {
      * １つの画像を表示するフレーム数
      */
     static get DRAW_FRAME() {
-        return 5;
+        return 3;
     }
 
-
+    /**
+     * 使用する画像を読み込む
+     */
     static loadImage() {
         /*
         let img = new Image() ;
@@ -75,26 +77,24 @@ class Maruo extends CharacterBase {
         }
 
         // 規定回数バウンドしたらキャラクタの終了フラグを立てる
-        if (this.boundCnt == 5) {
+        if (this.boundCnt == 7) {
             this.isEnd = true;
         }
 
-        
-        this.frameCnt++;
-        if (Maruo.DRAW_FRAME < this.frameCnt) {
+        // 描画する画像の調整
+        if (Maruo.DRAW_FRAME <= this.frameCnt) {
             this.imgIndex++;
             this.frameCnt = 0;
             if (Maruo.IMAGE_NAME.length <= this.imgIndex) {
                 this.imgIndex = 0;
             }
         }
+        this.frameCnt++;
     }
 
     draw() {
-        let img = state.cm.characterImageMap.get(Maruo.IMAGE_NAME[this.imgIndex]);
-
         front.drawImage(
-            img
+            state.cm.characterImageMap.get(Maruo.IMAGE_NAME[this.imgIndex])
             , this.x
             , this.y
         );

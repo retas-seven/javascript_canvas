@@ -18,6 +18,14 @@ class CharacterState extends StateBase {
         this.cm.add(new Maruo(300, 400, -2, -6));
         this.cm.add(new Maruo(200, 500, -8, -7));
 
+        for (let i = 0; i < 50; i++) {
+            this.cm.add(new Maruo(
+                Math.random() * 500
+                , Math.random() * 300
+                , Math.random() * 10
+                , Math.random() * 10));
+        }
+
         // 背景色を設定
         back.fillStyle = 'rgb(20, 35, 85)';
         back.fillRect(0, 0, WIDTH, HEIGHT);

@@ -1,7 +1,7 @@
 /** 画面幅 */
-const WIDTH = 640;
+const WIDTH = 720;
 /** 画面高さ */
-const HEIGHT = 480;
+const HEIGHT = 405;
 /** １フレームの描画に使用する時間（ミリ秒） */
 const FRAME_MSEC = 1000 / 60;
 /** コンテキスト（システム用CANVAS） */

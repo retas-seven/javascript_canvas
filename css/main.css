@@ -8,7 +8,7 @@ body {
     position: relative;
     /*border: solid 1px;*/
     width: 1000px;
-    height: 540px;
+    height: 600px;
     /*background-color: white;*/
 }
 .canvas {
@@ -21,6 +21,12 @@ body {
     outline-width: 15px;
     outline-style: solid;
     outline-color: gray;
+    
+    /* 640×480のcanvasを引き伸ばして表示する */
+    /*
+    width: 800px;
+    height: 600px;
+    */
 }
 .systemCanvas {
     z-index: 30;
