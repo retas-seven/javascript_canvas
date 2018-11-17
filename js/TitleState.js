@@ -11,8 +11,10 @@ class TitleState extends StateBase {
      */
     init () {
         // 背景色を設定
-        back.fillStyle = 'rgb(10, 10, 10)';
+        back.fillStyle = 'rgb(10, 10, 60)';
         back.fillRect(0, 0, WIDTH, HEIGHT);
+
+        this.isReady = true;
     }
 
     /**

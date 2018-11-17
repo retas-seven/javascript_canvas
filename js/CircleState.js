@@ -20,6 +20,8 @@ class CircleState extends StateBase {
         // 背景色を設定
         back.fillStyle = 'rgb(100, 100, 0)';
         back.fillRect(0, 0, WIDTH, HEIGHT);
+
+        this.isReady = true;
     }
 
     /**

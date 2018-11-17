@@ -8,13 +8,18 @@ class StateBase {
     constructor() {
         this.cm = new CharacterManager();
         this._isChangeStateEnd = false;
+        this.isReady = false;
     }
 
     changeState(stateName) {
         if (!this._isChangeStateEnd) {
-            isSystemBlack = true;
-            systemAlpha = 0;
-            nextStateName = stateName;
+
+            blackFadeIn(() => {
+                let nextState = eval("new " + stateName + "();");
+                nextState.init();
+                state = nextState;
+            });
+
             this._isChangeStateEnd = true;
         }
     }

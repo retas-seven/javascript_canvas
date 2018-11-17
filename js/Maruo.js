@@ -17,14 +17,17 @@ class Maruo extends CharacterBase {
     }
 
     /**
-     * 使用する画像を読み込む
+     * キャラクタの高さ
      */
-    static loadImage() {
-        for (let imgName of Maruo.IMAGE_NAME) {
-            let img = new Image() ;
-            img.src = imgName;
-            state.cm.characterImageMap.set(imgName, img);
-        }
+    static get WIDTH() {
+        return 50;
+    }
+
+    /**
+     * １キャラクタの横幅
+     */
+    static get HEIGHT() {
+        return 50;
     }
 
     /**
@@ -39,13 +42,8 @@ class Maruo extends CharacterBase {
         this.boundCnt = 0;
         this.imgIndex = 0;
         this.frameCnt = 0;
-
-        // TODO 画像読み込みを待つ処理を作成する必要あり？
-        /*
-        let tmp = state.cm.characterImageMap.get(Maruo.IMAGE_NAME);
-        this.width = tmp.width;
-        this.height = tmp.height;
-        */
+        this.width = Maruo.WIDTH;
+        this.height = Maruo.HEIGHT;
     }
 
     run() {
@@ -72,7 +70,7 @@ class Maruo extends CharacterBase {
         }
 
         // 規定回数バウンドしたらキャラクタの終了フラグを立てる
-        if (4 <= this.boundCnt) {
+        if (8 <= this.boundCnt) {
             this.isEnd = true;
         }
 
@@ -96,6 +94,6 @@ class Maruo extends CharacterBase {
     }
 
     leftClick() {
-        // this.isEnd = true;
+        this.isEnd = true;
     }
 }

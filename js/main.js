@@ -22,7 +22,7 @@ var _loopEndMsc;
 var isSystemBlack = false;
 var systemAlpha = 0;
 var isSystemBlackClear = false;
-var nextStateName;
+var fadeAfterFunc;
 
 /**
  * 初期処理
@@ -53,6 +53,10 @@ function init() {
     // state = new CharacterState();
     state = new TitleState();
     state.init();
+
+    // メインループ開始
+    _loopEndMsc = 0;
+    execMainLoop();
 }
 
 /**
@@ -63,29 +67,7 @@ function mainLoop() {
     
     if (FRAME_MSEC < (_loopStartMsc - _loopEndMsc)) {
 
-        if (isSystemBlack) {
-            systemAlpha += 0.2;
-            system.globalAlpha = systemAlpha;
-            system.fillRect(0, 0, WIDTH, HEIGHT);
-            if (1.0 <= systemAlpha) {
-                let tmpState = eval("new " + nextStateName + "();");
-                state = tmpState;
-                tmpState.init();
-                isSystemBlack = false;
-                isSystemBlackClear = true;
-                systemAlpha = 1.0;
-            }
-        }
-        else if (isSystemBlackClear) {
-            systemAlpha -= 0.2;
-            system.globalAlpha = systemAlpha;
-            system.clearRect(0, 0, WIDTH, HEIGHT);
-            system.fillRect(0, 0, WIDTH, HEIGHT);
-            if (systemAlpha <= 0.0) {
-                isSystemBlackClear = false;
-                system.clearRect(0, 0, WIDTH, HEIGHT);
-            }
-        }
+        systemFunc();
 
         // 検知したマウスイベントをマウスオブジェクトに反映
         mouse.update();
@@ -101,12 +83,50 @@ function mainLoop() {
         // 描画間隔調整のための処理
         _loopEndMsc = _loopStartMsc;
     }
-    
+    if (state.isReady) {
+        execMainLoop();
+    }
+}
+
+/**
+ * メインループ実行
+ */
+function execMainLoop() {
     requestAnimationFrame(mainLoop);
 }
 
-// 画面を初期化
-init();
-// メインループ開始
-_loopEndMsc = 0;
-requestAnimationFrame(mainLoop);
+function blackFadeIn(callback) {
+    fadeAfterFunc = callback;
+    isSystemBlack = true;
+    systemAlpha = 0;
+}
+
+function systemFunc(callbackFunc) {
+    if (isSystemBlack) {
+        systemAlpha += 0.1;
+        system.globalAlpha = systemAlpha;
+        system.fillRect(0, 0, WIDTH, HEIGHT);
+        if (1.0 <= systemAlpha) {
+
+            // コールバック
+            if (fadeAfterFunc !== void 0) {
+                fadeAfterFunc();
+                fadeAfterFunc = void 0;
+            }
+
+            isSystemBlack = false;
+            isSystemBlackClear = true;
+            systemAlpha = 1.0;
+        }
+    }
+    else if (isSystemBlackClear) {
+        systemAlpha -= 0.1;
+        system.globalAlpha = systemAlpha;
+        system.clearRect(0, 0, WIDTH, HEIGHT);
+        system.fillRect(0, 0, WIDTH, HEIGHT);
+        if (systemAlpha <= 0.0) {
+            isSystemBlackClear = false;
+            system.clearRect(0, 0, WIDTH, HEIGHT);
+        }
+    }
+}

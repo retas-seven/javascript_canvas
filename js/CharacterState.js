@@ -11,27 +11,31 @@ class CharacterState extends StateBase {
      */
     init () {
         // 使用するキャラクタの画像を読み込む
-        Maruo.loadImage();
-        MaruoRed.loadImage();
+        this.cm.loadImage (
+            () => {
+                this.isReady = true;
+                console.log("isReady:" + this.isReady);
+                execMainLoop();
+            }
+            , Maruo.IMAGE_NAME
+            , MaruoRed.IMAGE_NAME
+        );
 
         // 描画するキャラクタを作成
-        // this.cm.add(new Maruo(50, 150, 3, 5));
-        // this.cm.add(new Maruo(300, 400, -2, -6));
-        // this.cm.add(new Maruo(200, 500, -8, -7));
         for (let i = 0; i < 45; i++) {
             this.cm.add(new Maruo(
                 Math.random() * 650
                 , Math.random() * 350
-                , Math.random() * 20 - 10
-                , Math.random() * 20 - 10));
+                , Math.random() * 5 + 3
+                , Math.random() * 5 + 3));
         }
 
         for (let i = 0; i < 25; i++) {
             this.cm.add(new MaruoRed(
                 Math.random() * 650
                 , Math.random() * 350
-                , Math.random() * 50 - 25
-                , Math.random() * 50 - 25));
+                , Math.random() * 7 + 4
+                , Math.random() * 7 + 4));
         }
 
         // 背景色を設定

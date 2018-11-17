@@ -17,14 +17,17 @@ class MaruoRed extends CharacterBase {
     }
 
     /**
-     * 使用する画像を読み込む
+     * キャラクタの高さ
      */
-    static loadImage() {
-        for (let imgName of MaruoRed.IMAGE_NAME) {
-            let img = new Image() ;
-            img.src = imgName;
-            state.cm.characterImageMap.set(imgName, img);
-        }
+    static get WIDTH() {
+        return 50;
+    }
+
+    /**
+     * １キャラクタの横幅
+     */
+    static get HEIGHT() {
+        return 50;
     }
 
     /**
@@ -39,6 +42,8 @@ class MaruoRed extends CharacterBase {
         this.boundCnt = 0;
         this.imgIndex = 0;
         this.frameCnt = 0;
+        this.width = MaruoRed.WIDTH;
+        this.height = MaruoRed.HEIGHT;
     }
 
     run() {
@@ -65,7 +70,7 @@ class MaruoRed extends CharacterBase {
         }
 
         // 規定回数バウンドしたらキャラクタの終了フラグを立てる
-        if (5 <= this.boundCnt) {
+        if (10 <= this.boundCnt) {
             this.isEnd = true;
         }
 
@@ -89,6 +94,6 @@ class MaruoRed extends CharacterBase {
     }
 
     leftClick() {
-        // this.isEnd = true;
+        this.isEnd = true;
     }
 }

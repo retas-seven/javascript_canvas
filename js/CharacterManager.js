@@ -6,8 +6,45 @@ class CharacterManager {
      * 初期化
      */
     constructor() {
+        // ステートに登場するキャラクタを管理する配列
         this.characterList = [];
+        // ステートで使用するイメージを格納するMap
         this.characterImageMap = new Map();
+
+        this.useImageCnt = 0;
+        this.loadCompleteImageCnt = 0;
+        this.isLoadImgComplete = false;
+    }
+
+    /**
+     * 使用するイメージを読み込む
+     */
+    loadImage(callback, ...imgNameAry) {
+        let allImgAry = [];
+        let uniqueImgAry = [];
+
+        for (let IndividualImgNameAry of imgNameAry) {
+            allImgAry.push(...IndividualImgNameAry);
+        }
+
+        uniqueImgAry = Array.from(new Set(allImgAry));
+        this.useImageCnt = uniqueImgAry.length;
+
+        for (let imgName of uniqueImgAry) {
+            let img = new Image() ;
+            img.onload = () => {
+                this.loadCompleteImageCnt++;
+                console.log("loadCompleteImageCnt:" + this.loadCompleteImageCnt);
+
+                if (this.loadCompleteImageCnt == this.useImageCnt) {
+                    this.isLoadImgComplete = true;
+                    console.log("isLoadImgComplete:" + this.isLoadImgComplete);
+                    callback();
+                }
+            }
+            img.src = imgName;
+            this.characterImageMap.set(imgName, img);
+        }
     }
 
     /**
