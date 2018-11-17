@@ -21,9 +21,9 @@ class TitleState extends StateBase {
     draw() {
         front.font = "bold 50px 'Arial'";
         front.fillStyle = "#ffffff";
-        front.fillText("TitleState", 200,200);
+        front.fillText("javascript canvas", 155,200);
         front.font = "bold 17px 'Arial'";
-        front.fillText("mouse click", 270,350);
+        front.fillText("mouse click", 315,350);
     }
 
     /**
