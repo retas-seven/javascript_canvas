@@ -44,6 +44,7 @@ class Maruo extends CharacterBase {
         this.frameCnt = 0;
         this.width = Maruo.WIDTH;
         this.height = Maruo.HEIGHT;
+        this.isReachedLeftEnd = false;
     }
 
     run() {
@@ -51,13 +52,18 @@ class Maruo extends CharacterBase {
         this.y += this.dy;
 
         if ((WIDTH - this.width) < this.x) {
-            this.x = (WIDTH - this.width);
-            this.dx = -this.dx;
-            this.boundCnt++;
+            if (this.isReachedLeftEnd) {
+                this.x = (WIDTH - this.width);
+                this.dx = -this.dx;
+                this.boundCnt++;
+            }
         } else if (this.x < 0) {
             this.x = 0;
             this.dx = -this.dx;
             this.boundCnt++;
+            if (!this.isReachedLeftEnd) {
+                this.isReachedLeftEnd = true;
+            }
         }
         if ((HEIGHT - this.height) < this.y) {
             this.y = (HEIGHT - this.height);

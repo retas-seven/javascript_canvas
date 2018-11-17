@@ -21,12 +21,8 @@ body {
     outline-width: 15px;
     outline-style: solid;
     outline-color: gray;
-    
-    /* 640×480のcanvasを引き伸ばして表示する */
-    /*
-    width: 800px;
-    height: 600px;
-    */
+    width: 720px;
+    height: 405px;
 }
 .systemCanvas {
     z-index: 30;

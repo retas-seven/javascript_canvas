@@ -24,18 +24,18 @@ class CharacterState extends StateBase {
         // 描画するキャラクタを作成
         for (let i = 0; i < 45; i++) {
             this.cm.add(new Maruo(
-                Math.random() * 650
-                , Math.random() * 350
-                , Math.random() * 5 + 3
-                , Math.random() * 5 + 3));
+                Math.random() * 1000 + WIDTH 
+                , Math.random() * HEIGHT - Maruo.HEIGHT
+                , Math.random() * -5 - 1
+                , Math.random() * -5 - 1));
         }
 
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 8; i++) {
             this.cm.add(new MaruoRed(
-                Math.random() * 650
-                , Math.random() * 350
-                , Math.random() * 7 + 4
-                , Math.random() * 7 + 4));
+                Math.random() * 1000 + WIDTH 
+                , Math.random() * HEIGHT - MaruoRed.HEIGHT
+                , Math.random() * -7 - 4
+                , Math.random() * -7 - 4));
         }
 
         // 背景色を設定
@@ -57,19 +57,17 @@ class CharacterState extends StateBase {
         this.cm.run();
 
         if (mouse.isRight) {
-            this.changeState("RectState");
+            // this.changeState("RectState");
+            this.changeState("CharacterState");
         }
 
         if (this.cm.characterList.length == 0) {
-            this.changeState("CircleState");
+            // this.changeState("CircleState");
+            this.changeState("CharacterState");
         }
 
         if (mouse.isLeft) {
-            console.log("CharacterState　左クリック");
-        }
-
-        if (mouse.isRight) {
-            console.log("CharacterState　右クリック");
+            this.cm.add(new Laser(mouse.x, mouse.y));
         }
     }
 }
