@@ -6,62 +6,73 @@ class Laser extends CharacterBase {
      * 表示するフレーム数
      */
     static get TOTAL_FRAME() {
-        return 6;
+        return 8;
     }
 
     /**
      * 初期化
      */
     constructor(x, y) {
-        super();
-        this.lX = - 20;        // 左レーザーの始点座標X
-        this.lY = HEIGHT + 20; // 左レーザーの始点座標Y
-        this.rX = WIDTH + 20;  // 右レーザーの始点座標X
-        this.rY = HEIGHT + 20; // 右レーザーの始点座標Y
-        this.x = x;
-        this.y = y;
-        this.red = 255;
-        this.grn = 100;
-        this.blu = 0;
+        super(x, y);
+
+        // 左レーザーを射出する座標(lX, lY)
+        this.lX = - 20;
+        this.lY = HEIGHT + 20;
+
+        // 右レーザーを射出する座標(rX, rY)
+        this.rX = WIDTH + 20;
+        this.rY = HEIGHT + 20;
+
+        // 描画する際のR,G,B,アルファ値
+        this.r = 255;
+        this.g = 100;
+        this.b = 0;
+        this.a = 1.0;
+
+        // 経過フレーム
         this.frm = 0;
     }
 
     run() {
-        this.frm++;
         if (Laser.TOTAL_FRAME < this.frm) {
             this.isEnd = true;
         }
+        this.frm++;
     }
 
     draw() {
-        front.strokeStyle = `rgb(${this.red}, ${this.grn}, ${this.blu})`;
-        front.beginPath();
-        front.moveTo(
-            this.lX + (this.x - this.lX) / Laser.TOTAL_FRAME * this.frm - 1
-            , this.y + this.lY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
-        front.lineTo(this.x - 2, this.y);
-        front.moveTo(
-            this.lX + (this.x - this.lX) / Laser.TOTAL_FRAME * this.frm
-            , this.y + this.lY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
-        front.lineTo(this.x - 2, this.y);
-        front.moveTo(
-            this.rX + (this.x - this.rX) / Laser.TOTAL_FRAME * this.frm - 1
-            , this.y + this.rY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
-        front.lineTo(this.x + 2, this.y);
-        front.moveTo(
-            this.rX + (this.x - this.rX) / Laser.TOTAL_FRAME * this.frm
-            , this.y + this.rY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
-        front.lineTo(this.x + 2, this.y);
-        front.stroke();
+        front.fillStyle = `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
 
-        if(this.red != 0) {
-            this.red = this.red - (this.red / Laser.TOTAL_FRAME);
-        }
-        if(this.grn != 0) {
-            this.grn = this.grn - (this.grn / Laser.TOTAL_FRAME);
-        }
-        if(this.blu != 0) {
-            this.blu = this.blu - (this.blu / Laser.TOTAL_FRAME);
+        // 左レーザー
+        front.beginPath();
+        front.moveTo(this.x - 1, this.y);
+        front.lineTo(
+            this.x - ((this.x - this.lX) / this.frm)
+            , this.y + ((this.lY - this.y) / this.frm)
+        );
+        front.lineTo(
+            this.x - ((this.x - this.lX) / this.frm)
+            , this.y + ((this.lY - this.y) / this.frm) + (15 / this.frm)
+        );
+        front.closePath();
+        front.fill();
+
+        // 右レーザー
+        front.beginPath();
+        front.moveTo(this.x + 1, this.y);
+        front.lineTo(
+            this.x + ((this.x - this.lX) / this.frm)
+            , this.y + ((this.rY - this.y) / this.frm)
+        );
+        front.lineTo(
+            this.x + ((this.x - this.lX) / this.frm)
+            , this.y + ((this.rY - this.y) / this.frm) + (15 / this.frm)
+        );
+        front.closePath();
+        front.fill();
+
+        if (0.0 <= this.a) {
+            this.a -= 0.1;
         }
     }
 }
