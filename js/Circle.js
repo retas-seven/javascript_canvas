@@ -6,15 +6,11 @@ class Circle extends CharacterBase {
      * 初期化
      */
     constructor(x, y, dx, dy, radius, color) {
-        super();
-        this.x = x;
-        this.y = y;
+        super(x, y, radius * 2, radius * 2);
         this.dx = dx;
         this.dy = dy;
         this.radius = radius;
         this.color = color;
-        this.width = radius * 2;
-        this.height = radius * 2;
         this.boundCnt = 0;
     }
 

@@ -34,16 +34,12 @@ class Maruo extends CharacterBase {
      * 初期化
      */
     constructor(x, y, dx, dy) {
-        super();
-        this.x = x;
-        this.y = y;
+        super(x, y, Maruo.WIDTH, Maruo.HEIGHT);
         this.dx = dx;
         this.dy = dy;
         this.boundCnt = 0;
         this.imgIndex = 0;
         this.frameCnt = 0;
-        this.width = Maruo.WIDTH;
-        this.height = Maruo.HEIGHT;
         this.isReachedLeftEnd = false;
     }
 

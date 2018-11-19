@@ -14,10 +14,10 @@ class Laser extends CharacterBase {
      */
     constructor(x, y) {
         super();
-        this.lX = - 20;        // 左レーザーの開始座標X
-        this.lY = HEIGHT + 20; // 左レーザーの開始座標Y
-        this.rX = WIDTH + 20;  // 右レーザーの開始座標X
-        this.rY = HEIGHT + 20; // 右レーザーの開始座標Y
+        this.lX = - 20;        // 左レーザーの始点座標X
+        this.lY = HEIGHT + 20; // 左レーザーの始点座標Y
+        this.rX = WIDTH + 20;  // 右レーザーの始点座標X
+        this.rY = HEIGHT + 20; // 右レーザーの始点座標Y
         this.x = x;
         this.y = y;
         this.red = 255;
@@ -34,14 +34,14 @@ class Laser extends CharacterBase {
     }
 
     draw() {
-        let tmp = "rgb(" + this.red + ", " + this.grn + ", " + this.blu + ")";
-        front.strokeStyle = tmp;
+        front.strokeStyle = `rgb(${this.red}, ${this.grn}, ${this.blu})`;
         front.beginPath();
-        front.moveTo(this.lX + (this.x - this.lX) / Laser.TOTAL_FRAME * this.frm - 1
+        front.moveTo(
+            this.lX + (this.x - this.lX) / Laser.TOTAL_FRAME * this.frm - 1
             , this.y + this.lY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
         front.lineTo(this.x - 2, this.y);
-        front.moveTo(this.lX + (
-            this.x - this.lX) / Laser.TOTAL_FRAME * this.frm
+        front.moveTo(
+            this.lX + (this.x - this.lX) / Laser.TOTAL_FRAME * this.frm
             , this.y + this.lY / Laser.TOTAL_FRAME * (Laser.TOTAL_FRAME - this.frm));
         front.lineTo(this.x - 2, this.y);
         front.moveTo(
@@ -55,13 +55,13 @@ class Laser extends CharacterBase {
         front.stroke();
 
         if(this.red != 0) {
-            this.red = this.red - this.red / Laser.TOTAL_FRAME;
+            this.red = this.red - (this.red / Laser.TOTAL_FRAME);
         }
         if(this.grn != 0) {
-            this.grn = this.grn - this.grn / Laser.TOTAL_FRAME;
+            this.grn = this.grn - (this.grn / Laser.TOTAL_FRAME);
         }
         if(this.blu != 0) {
-            this.blu = this.blu - this.blu / Laser.TOTAL_FRAME;
+            this.blu = this.blu - (this.blu / Laser.TOTAL_FRAME);
         }
     }
 }

@@ -34,16 +34,12 @@ class MaruoRed extends CharacterBase {
      * 初期化
      */
     constructor(x, y, dx, dy) {
-        super();
-        this.x = x;
-        this.y = y;
+        super(x, y, MaruoRed.WIDTH, MaruoRed.HEIGHT);
         this.dx = dx;
         this.dy = dy;
         this.boundCnt = 0;
         this.imgIndex = 0;
         this.frameCnt = 0;
-        this.width = MaruoRed.WIDTH;
-        this.height = MaruoRed.HEIGHT;
         this.isReachedLeftEnd = false;
     }
 
