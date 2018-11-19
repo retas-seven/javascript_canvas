@@ -41,7 +41,7 @@ class CharacterManager {
                     console.log("isLoadImgComplete:" + this.isLoadImgComplete);
                     callback();
                 }
-            }
+            };
             img.src = imgName;
             this.characterImageMap.set(imgName, img);
         }
