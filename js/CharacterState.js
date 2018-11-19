@@ -56,15 +56,15 @@ class CharacterState extends StateBase {
     run() {
         this.cm.run();
 
-        if (mouse.isRight) {
-            // this.changeState("RectState");
-            this.changeState("CharacterState");
-        }
-
-        // if (this.cm.characterList.length == 0) {
-        //     // this.changeState("CircleState");
+        // if (mouse.isRight) {
+        //     // this.changeState("RectState");
         //     this.changeState("CharacterState");
         // }
+
+        if (this.cm.characterList.length == 0) {
+            // this.changeState("CircleState");
+            this.changeState("CharacterState");
+        }
 
         if (mouse.isLeft) {
             this.cm.add(new Laser(mouse.x, mouse.y));
