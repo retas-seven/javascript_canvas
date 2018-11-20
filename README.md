@@ -6,14 +6,14 @@
 
 * Chrome（70.0.3538.102）で使えるES6の構文を使う。
 
-![記録](readme/01.png)
+* [Demo](https://retas-seven.github.io/main.html "Demo")
+
+![画面](readme/01.png)
 
 <span style="font-size: 65%">左クリックで射撃。</span>
 
 <br />
 
-
-* [https://retas-seven.github.io/main.html](https://retas-seven.github.io/main.html "Demo")
 
 ## 対応ブラウザ
 
