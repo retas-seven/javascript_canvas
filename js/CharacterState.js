@@ -5,8 +5,8 @@ class CharacterState extends StateBase {
     constructor() {
         super();
         this.bgImg = new Image();
-        // this.characterImgLoadComplete = false;
-        // this.bgImgLoadComplete = false;
+        this.characterImgLoadComplete = false;
+        this.bgImgLoadComplete = false;
     }
 
     /**
@@ -16,11 +16,11 @@ class CharacterState extends StateBase {
         // 使用するキャラクタの画像を読み込む
         this.cm.loadImage (
             () => {
-                // this.characterImgLoadComplete = true;
-                // if (this.bgImgLoadComplete) {
-                //     this.isReady = true;
-                //     execMainLoop();
-                // }
+                this.characterImgLoadComplete = true;
+                if (this.bgImgLoadComplete) {
+                    this.isReady = true;
+                    execMainLoop();
+                }
                 this.isReady = true;
                 execMainLoop();
             }
@@ -47,16 +47,16 @@ class CharacterState extends StateBase {
                 , Math.random() * -7 - 4));
         }
 
-        // // 背景画像を設定
-        // this.bgImg.onload = () => {
-        //     this.bgImgLoadComplete = true;
-        //     back.drawImage(this.bgImg, 0, 0);
-        //     if (this.characterImgLoadComplete) {
-        //         this.isReady = true;
-        //         execMainLoop();
-        //     }
-        // };
-        // this.bgImg.src = "./img/bg01.jpg";
+        // 背景画像を設定
+        this.bgImg.onload = () => {
+            this.bgImgLoadComplete = true;
+            back.drawImage(this.bgImg, 0, 0);
+            if (this.characterImgLoadComplete) {
+                this.isReady = true;
+                execMainLoop();
+            }
+        };
+        this.bgImg.src = "./img/bg01.jpg";
 
         // 背景色を設定
         let grd = back.createLinearGradient(0, 0, 0, WIDTH);
@@ -79,11 +79,6 @@ class CharacterState extends StateBase {
      */
     run() {
         this.cm.run();
-
-        // if (mouse.isRight) {
-        //     // this.changeState("RectState");
-        //     this.changeState("CharacterState");
-        // }
 
         if (this.cm.characterList.length == 0) {
             // this.changeState("CircleState");
