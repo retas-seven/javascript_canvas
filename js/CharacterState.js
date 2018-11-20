@@ -25,6 +25,7 @@ class CharacterState extends StateBase {
                 execMainLoop();
             }
             , Maruo.IMAGE_NAME
+            , Maruo.EXPLOSION_IMAGE_NAME
             , MaruoRed.IMAGE_NAME
         );
 
