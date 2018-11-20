@@ -4,7 +4,7 @@
 class Maruo extends CharacterBase {
     /** 使用する画像名（通常） */
     static get IMAGE_NAME() {
-        return ["./img/maruo_1.png", "./img/maruo_2.png","./img/maruo_3.png"];
+        return ["./img/maruo_1.png", "./img/maruo_2.png", "./img/maruo_3.png"];
     }
     /** 使用する画像名（やられ） */
     static get EXPLOSION_IMAGE_NAME() {
@@ -97,14 +97,9 @@ class Maruo extends CharacterBase {
             this.isEnd = true;
         }
 
-        // 描画する画像の調整
-        if (Maruo.DRAW_FRAME <= this.frameCnt) {
-            this.imgIndex++;
-            this.frameCnt = 0;
-            if (Maruo.IMAGE_NAME.length <= this.imgIndex) {
-                this.imgIndex = 0;
-            }
-        }
+        // 描画する画像のインデックス調整
+        this.imgIndex = Math.floor((this.frameCnt % (Maruo.IMAGE_NAME.length * Maruo.DRAW_FRAME)) / Maruo.DRAW_FRAME);
+
         this.frameCnt++;
     }
 
