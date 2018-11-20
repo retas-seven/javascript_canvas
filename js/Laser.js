@@ -16,12 +16,12 @@ class Laser extends CharacterBase {
         super(x, y);
 
         // 左レーザーを射出する座標(lX, lY)
-        this.lX = - 20;
-        this.lY = HEIGHT + 20;
+        this.lX = - 40;
+        this.lY = HEIGHT + 50;
 
         // 右レーザーを射出する座標(rX, rY)
-        this.rX = WIDTH + 20;
-        this.rY = HEIGHT + 20;
+        this.rX = WIDTH + 40;
+        this.rY = HEIGHT + 50;
 
         // 描画する際のR,G,B,アルファ値
         this.r = 255;
