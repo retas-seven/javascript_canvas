@@ -27,6 +27,7 @@ class CharacterState extends StateBase {
             , Maruo.IMAGE_NAME
             , Maruo.EXPLOSION_IMAGE_NAME
             , MaruoRed.IMAGE_NAME
+            , MaruoRed.EXPLOSION_IMAGE_NAME
         );
 
         // 描画するキャラクタを作成
