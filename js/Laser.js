@@ -61,11 +61,11 @@ class Laser extends CharacterBase {
         front.beginPath();
         front.moveTo(this.x + 1, this.y);
         front.lineTo(
-            this.x + ((this.x - this.lX) / this.frm)
+            this.x + ((this.rX - this.x) / this.frm)
             , this.y + ((this.rY - this.y) / this.frm)
         );
         front.lineTo(
-            this.x + ((this.x - this.lX) / this.frm)
+            this.x + ((this.rX - this.x) / this.frm)
             , this.y + ((this.rY - this.y) / this.frm) + (15 / this.frm)
         );
         front.closePath();
