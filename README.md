@@ -8,7 +8,7 @@
 
 * [Demo](https://retas-seven.github.io/main.html "Demo")
 
-![画面](readme/01.png){:target="_blank"}
+![画面](readme/01.png)
 
 <span style="font-size: 65%">左クリックで射撃。</span>
 
