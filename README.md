@@ -10,10 +10,13 @@
 
 ![画面](readme/01.png)
 
-<span style="font-size: 65%">左クリックで射撃。</span>
+左クリックで射撃。
 
 <br />
 
+![画面](readme/02.png)
+
+<br />
 
 ## 対応ブラウザ
 
