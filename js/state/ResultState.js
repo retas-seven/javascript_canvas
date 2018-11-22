@@ -21,7 +21,6 @@ class ResultState extends StateBase {
 				this.loadCompleteImgCnt++;
 	            if (this.loadCompleteImgCnt == Object.keys(this.iconImg).length) {
 	                this.isReady = true;
-	                //execMainLoop();
 	            }
 			}
 		}
