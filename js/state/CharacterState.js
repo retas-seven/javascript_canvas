@@ -24,10 +24,10 @@ class CharacterState extends StateBase {
                     this.isReady = true;
                 }
             }
-            , Maruo.IMAGE_NAME
-            , Maruo.EXPLOSION_IMAGE_NAME
-            , MaruoRed.IMAGE_NAME
-            , MaruoRed.EXPLOSION_IMAGE_NAME
+            , Maruo.NORMAL_IMAGE_NAME
+            , Maruo.DESTROY_IMAGE_NAME
+            , MaruoRed.NORMAL_IMAGE_NAME
+            , MaruoRed.DESTROY_IMAGE_NAME
         );
 
         // まるおを生成

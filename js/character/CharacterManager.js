@@ -90,10 +90,12 @@ class CharacterManager {
         for (let i = 0; i < this.characterList.length; i++) {
             this.characterList[i].run();
 
-            // 終了フラグが立っている場合は配列から取り除く
             if (this.characterList[i].isEnd) {
+                // 終了フラグが立っている場合は配列から取り除く
                 this.characterList.splice(i, 1);
                 i--;
+            } else {
+                this.characterList[i].elapseFrm++;
             }
         }
     }
