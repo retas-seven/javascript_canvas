@@ -119,13 +119,13 @@ class Maruo extends CharacterBase {
     draw() {
         if (Maruo.STATUS_NORMAL == this.status) {
             front.drawImage(
-                state.cm.characterImageMap.get(Maruo.NORMAL_IMAGE_NAME[this.imgIndex])
+                state.im.imageMap.get(Maruo.NORMAL_IMAGE_NAME[this.imgIndex])
                 , this.x
                 , this.y
             );
         } else if (Maruo.STATUS_DESTROY == this.status) {
             front.drawImage(
-                state.cm.characterImageMap.get(Maruo.DESTROY_IMAGE_NAME[0])
+                state.im.imageMap.get(Maruo.DESTROY_IMAGE_NAME[0])
                 , this.x
                 , this.y
             );

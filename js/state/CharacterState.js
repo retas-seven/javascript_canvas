@@ -2,12 +2,16 @@
  * ゲーム画面
  */
 class CharacterState extends StateBase {
+    /** 背景画像名 */
+    static get BG_NAME() {
+        return "./img/bg01.jpg";
+    }
+
+    /**
+     * コンストラクタ
+     */
     constructor() {
         super();
-        this.bgImg = new Image();
-        this.characterImgLoadComplete = false;
-        this.bgImgLoadComplete = false;
-
         shareData.maruoDestroyCnt = 0;
         shareData.maruoRedDestroyCnt = 0;
     }
@@ -16,22 +20,21 @@ class CharacterState extends StateBase {
      * 初期化
      */
     init () {
-        // 使用するキャラクタの画像を読み込む
-        this.cm.loadImage (
+        // 使用する画像を読み込む
+        this.im.loadImage (
             () => {
-                this.characterImgLoadComplete = true;
-                if (this.bgImgLoadComplete) {
-                    this.isReady = true;
-                }
+                // イメージ読み込み後、背景を描画
+                back.drawImage(this.im.imageMap.get(CharacterState.BG_NAME), 0, 0);
             }
             , Maruo.NORMAL_IMAGE_NAME
             , Maruo.DESTROY_IMAGE_NAME
             , MaruoRed.NORMAL_IMAGE_NAME
             , MaruoRed.DESTROY_IMAGE_NAME
+            , CharacterState.BG_NAME
         );
 
         // まるおを生成
-        for (let i = 0; i < 65; i++) {
+        for (let i = 0; i < 5; i++) {
             let maruo = new Maruo(
                 Math.random() * 1000 + WIDTH 
                 , Math.random() * HEIGHT - Maruo.HEIGHT
@@ -47,7 +50,7 @@ class CharacterState extends StateBase {
         }
 
         // 赤まるおを生成
-        for (let i = 0; i < 35; i++) {
+        for (let i = 0; i < 5; i++) {
             let maruoRed = new MaruoRed(
                 Math.random() * 1000 + WIDTH 
                 , Math.random() * HEIGHT - MaruoRed.HEIGHT
@@ -61,16 +64,6 @@ class CharacterState extends StateBase {
             
             this.cm.add(maruoRed);
         }
-
-        // 背景画像を設定
-        this.bgImg.onload = () => {
-            this.bgImgLoadComplete = true;
-            back.drawImage(this.bgImg, 0, 0);
-            if (this.characterImgLoadComplete) {
-                this.isReady = true;
-            }
-        };
-        this.bgImg.src = "./img/bg01.jpg";
     }
 
     /**

@@ -119,13 +119,13 @@ class MaruoRed extends CharacterBase {
     draw() {
         if (MaruoRed.STATUS_NORMAL == this.status) {
             front.drawImage(
-                state.cm.characterImageMap.get(MaruoRed.NORMAL_IMAGE_NAME[this.imgIndex])
+                state.im.imageMap.get(MaruoRed.NORMAL_IMAGE_NAME[this.imgIndex])
                 , this.x
                 , this.y
             );
         } else if (MaruoRed.STATUS_DESTROY == this.status) {
             front.drawImage(
-                state.cm.characterImageMap.get(MaruoRed.DESTROY_IMAGE_NAME[0])
+                state.im.imageMap.get(MaruoRed.DESTROY_IMAGE_NAME[0])
                 , this.x
                 , this.y
             );
