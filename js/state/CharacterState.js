@@ -34,7 +34,7 @@ class CharacterState extends StateBase {
         );
 
         // まるおを生成
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 65; i++) {
             let maruo = new Maruo(
                 Math.random() * 1000 + WIDTH 
                 , Math.random() * HEIGHT - Maruo.HEIGHT
@@ -50,7 +50,7 @@ class CharacterState extends StateBase {
         }
 
         // 赤まるおを生成
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 35; i++) {
             let maruoRed = new MaruoRed(
                 Math.random() * 1000 + WIDTH 
                 , Math.random() * HEIGHT - MaruoRed.HEIGHT
