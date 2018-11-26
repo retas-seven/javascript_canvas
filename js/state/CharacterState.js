@@ -12,14 +12,16 @@ class CharacterState extends StateBase {
      */
     constructor() {
         super();
-        shareData.maruoDestroyCnt = 0;
-        shareData.maruoRedDestroyCnt = 0;
     }
 
     /**
      * 初期化
      */
     init () {
+        // 共有データのまるおは回数をリセット
+        shareData.maruoDestroyCnt = 0;
+        shareData.maruoRedDestroyCnt = 0;
+
         // 使用する画像を読み込む
         this.im.loadImage (
             () => {

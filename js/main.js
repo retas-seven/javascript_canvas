@@ -54,8 +54,6 @@ function init() {
     shareData = {};
 
     // 初期画面を設定
-    // state = new CircleState();
-    // state = new CharacterState();
     state = new TitleState();
     state.init();
 

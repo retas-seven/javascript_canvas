@@ -4,7 +4,7 @@
 class MaruoRed extends CharacterBase {
     /** 使用する画像名（通常） */
     static get NORMAL_IMAGE_NAME() {
-        return ["./img/maruo_red_1.png", "./img/maruo_red_2.png","./img/maruo_red_3.png"];
+        return ["./img/maruo_red_1.png", "./img/maruo_red_2.png", "./img/maruo_red_3.png"];
     }
     /** 使用する画像名（やられ） */
     static get DESTROY_IMAGE_NAME() {
