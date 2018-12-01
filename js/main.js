@@ -75,9 +75,13 @@ function mainLoop() {
         // 画面を初期化
         front.clearRect(0, 0, WIDTH, HEIGHT);
         // 状態を更新
-        state.run();
+        state.baseRun();
+        // キャラクタの登場スケジュール調整
+        state.baseScheduleCheck();
         // 描画
-        state.draw();
+        state.baseDraw();
+        // 後処理
+        state.baseAfterProcess();
         // 検知したマウスイベントを無効化
         mouse.reset();
     	
