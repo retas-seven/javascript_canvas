@@ -18,7 +18,7 @@ class CharacterState extends StateBase {
      * 初期化
      */
     init () {
-        // 共有データのまるおは回数をリセット
+        // 共有データのまるお破壊数をリセット
         shareData.maruoDestroyCnt = 0;
         shareData.maruoRedDestroyCnt = 0;
 
